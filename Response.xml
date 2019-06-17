@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message>
+    <transaction name="Normal">
+        <value>50</value>
+        <person>Mama</person>
+    </transaction>
+    <transaction name="Normal">
+        <value>60</value>
+        <person>Tata</person>
+    </transaction>
+    <transaction name="Priority">
+        <value>70</value>
+        <person>Gosc</person>
+    </transaction>
+    <transaction name="Normal">
+        <value>80</value>
+        <person>Admin</person>
+    </transaction>
+    <transaction name="Normal">
+        <value>90</value>
+        <person>Gosia</person>
+    </transaction>
+</message>
