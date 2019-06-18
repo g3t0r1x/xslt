@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                              xmlns:exsl="http://exslt.org/common"
-                              exclude-result-prefixes="exsl">
+                              xmlns:ms="urn:schemas-microsoft-com:xslt"
+                              exclude-result-prefixes="ms">
 
 <xsl:include href="UT_Templates/TextTemplates.xslt"/>
+<xsl:include href="UT_Templates/RftTemplates.xslt"/>
 
 <xsl:variable name="textModes" select="document('UT_Templates/TextModes.xml')/list"/>
+<xsl:variable name="rftModes" select="document('UT_Templates/RftModes.xml')/list"/>
 
 <xsl:template name="ASSERT_THAT_TEXT">
     <xsl:param name="text1"/>
@@ -26,7 +28,7 @@
     <xsl:param name="node2"/>
 
     <result>
-        <xsl:apply-templates select="$mode" mode="rtf_mode">
+        <xsl:apply-templates select="$mode" mode="rft_mode">
             <xsl:with-param name="node1" select="$node1"/>
             <xsl:with-param name="node2" select="$node2"/>
         </xsl:apply-templates>
