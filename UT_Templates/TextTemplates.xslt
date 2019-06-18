@@ -27,7 +27,7 @@
     <xsl:param name="text2"/>
 
     <xsl:choose>
-        <xsl:when test="contains($text1, $text2)">
+        <xsl:when test="$text2 = substring($text1, string-length($text1) - string-length($text2) + 1)">
             <xsl:attribute name="verdict">passed</xsl:attribute>
         </xsl:when>
         <xsl:otherwise>

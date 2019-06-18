@@ -7,20 +7,6 @@
 
     <xsl:template match="/">
         <tests>
-            <test id="TestInvoiceBodyTypeVariableStartsWith_PASS">
-                <xsl:call-template name="ASSERT_THAT_TEXT">
-                    <xsl:with-param name="text1" select="$InvoiceBodyType"/>
-                    <xsl:with-param name="mode" select="$textModes/STARTS_WITH"/>
-                    <xsl:with-param name="text2">Super</xsl:with-param>
-                </xsl:call-template>
-            </test>
-            <test id="TestInvoiceBodyTypeVariableStartsWith_FAILED">
-                <xsl:call-template name="ASSERT_THAT_TEXT">
-                    <xsl:with-param name="text1" select="$InvoiceBodyType"/>
-                    <xsl:with-param name="mode" select="$textModes/STARTS_WITH"/>
-                    <xsl:with-param name="text2">SuperTest</xsl:with-param>
-                </xsl:call-template>
-            </test>
             <test id="TestInvoiceBodyTypeVariableContains_PASS">
                 <xsl:call-template name="ASSERT_THAT_TEXT">
                     <xsl:with-param name="text1" select="$InvoiceBodyType"/>
@@ -35,6 +21,20 @@
                     <xsl:with-param name="text2">perTestInv</xsl:with-param>
                 </xsl:call-template>
             </test>
+            <test id="TestInvoiceBodyTypeVariableEndsWith_PASS">
+                <xsl:call-template name="ASSERT_THAT_TEXT">
+                    <xsl:with-param name="text1" select="$InvoiceBodyType"/>
+                    <xsl:with-param name="mode" select="$textModes/ENDS_WITH"/>
+                    <xsl:with-param name="text2">voice</xsl:with-param>
+                </xsl:call-template>
+            </test>
+            <test id="TestInvoiceBodyTypeVariableEndsWith_FAILED">
+                <xsl:call-template name="ASSERT_THAT_TEXT">
+                    <xsl:with-param name="text1" select="$InvoiceBodyType"/>
+                    <xsl:with-param name="mode" select="$textModes/ENDS_WITH"/>
+                    <xsl:with-param name="text2">voiceTest</xsl:with-param>
+                </xsl:call-template>
+            </test>
             <test id="TestInvoiceBodyTypeVariableEquals_PASS">
                 <xsl:call-template name="ASSERT_THAT_TEXT">
                     <xsl:with-param name="text1" select="$InvoiceBodyType"/>
@@ -47,6 +47,20 @@
                     <xsl:with-param name="text1" select="$InvoiceBodyType"/>
                     <xsl:with-param name="mode" select="$textModes/EQUALS"/>
                     <xsl:with-param name="text2">SuperTestInvoice</xsl:with-param>
+                </xsl:call-template>
+            </test>
+            <test id="TestInvoiceBodyTypeVariableStartsWith_PASS">
+                <xsl:call-template name="ASSERT_THAT_TEXT">
+                    <xsl:with-param name="text1" select="$InvoiceBodyType"/>
+                    <xsl:with-param name="mode" select="$textModes/STARTS_WITH"/>
+                    <xsl:with-param name="text2">Super</xsl:with-param>
+                </xsl:call-template>
+            </test>
+            <test id="TestInvoiceBodyTypeVariableStartsWith_FAILED">
+                <xsl:call-template name="ASSERT_THAT_TEXT">
+                    <xsl:with-param name="text1" select="$InvoiceBodyType"/>
+                    <xsl:with-param name="mode" select="$textModes/STARTS_WITH"/>
+                    <xsl:with-param name="text2">SuperTest</xsl:with-param>
                 </xsl:call-template>
             </test>
         </tests>

@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tests>
-    <test id="TestInvoiceBodyTypeVariableStartsWith_PASS">
-        <result verdict="passed"/>
-    </test>
-    <test id="TestInvoiceBodyTypeVariableStartsWith_FAILED">
-        <result verdict="failed">
-            <error-message>
-                <text1>SuperInvoice</text1>
-                <not_starts_with/>
-                <text2>SuperTest</text2>
-            </error-message>
-        </result>
-    </test>
     <test id="TestInvoiceBodyTypeVariableContains_PASS">
         <result verdict="passed"/>
     </test>
@@ -24,6 +12,19 @@
             </error-message>
         </result>
     </test>
+    <test id="TestInvoiceBodyTypeVariableEndsWith_PASS">
+        <result verdict="passed"/>
+    </test>
+    <test id="TestInvoiceBodyTypeVariableEndsWith_FAILED">
+        <result verdict="failed">
+            <error-message>
+                <text1>SuperInvoice</text1>
+                <not_ends_with/>
+                <text2>voiceTest</text2>
+                <test>voiceTest</test>
+            </error-message>
+        </result>
+    </test>
     <test id="TestInvoiceBodyTypeVariableEquals_PASS">
         <result verdict="passed"/>
     </test>
@@ -33,6 +34,18 @@
                 <text1>SuperInvoice</text1>
                 <not_equals/>
                 <text2>SuperTestInvoice</text2>
+            </error-message>
+        </result>
+    </test>
+    <test id="TestInvoiceBodyTypeVariableStartsWith_PASS">
+        <result verdict="passed"/>
+    </test>
+    <test id="TestInvoiceBodyTypeVariableStartsWith_FAILED">
+        <result verdict="failed">
+            <error-message>
+                <text1>SuperInvoice</text1>
+                <not_starts_with/>
+                <text2>SuperTest</text2>
             </error-message>
         </result>
     </test>
