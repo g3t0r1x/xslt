@@ -31,7 +31,16 @@ Try
     Write-Host "Loading" $xslt_stylesheet "into memory... " -NoNewLine
     $xslt.Load($xslt_stylesheet, $xslt_settings, $xml_url_resolver)
     Write-Host "Success" -ForegroundColor Green
+}
+Catch
+{
+    $ErrorMessage = $_.Exception.Message
+    $FailedItem = $_.Exception.ItemName
+    Write-Host "Error" $ErrorMessage ":" $FailedItem ":" $_.Exception
+}
 
+Try
+{
     Write-Host "Enabling XML pretty printing settings ... " -NoNewLine
     $xml_writter_settings = New-Object System.Xml.XmlWriterSettings
     $xml_writter_settings.Indent = 1
@@ -41,26 +50,48 @@ Try
     Write-Host "Creating new XML writer object... " -NoNewLine
     $xml_writer = [System.Xml.XmlWriter]::Create($xml_output, $xml_writter_settings)
     Write-Host "Success" -ForegroundColor Green
-
-    Write-Host "Creating new XML reader object... " -NoNewLine
-    $xml_reader = [System.Xml.XmlReader]::Create($xml_input)
-    Write-Host "Success" -ForegroundColor Green
-
-    Write-Host "Applying XSL Transformation on" $xml_input "file... " -NoNewLine
-    $xslt.Transform($xml_reader, $xml_writer)
-    Write-Host "Success" -ForegroundColor Green
-
-    Write-Host "Releasing alocated memory... " -NoNewLine
-    $xml_writer.Close()
-    $xml_reader.Close()
-    Write-Host "Success" -ForegroundColor Green
 }
 Catch
 {
+    $xml_writer.Close()
     $ErrorMessage = $_.Exception.Message
     $FailedItem = $_.Exception.ItemName
     Write-Host "Error" $ErrorMessage ":" $FailedItem ":" $_.Exception
 }
+
+Try
+{
+    Write-Host "Creating new XML reader object... " -NoNewLine
+    $xml_reader = [System.Xml.XmlReader]::Create($xml_input)
+    Write-Host "Success" -ForegroundColor Green
+}
+Catch
+{
+    $xml_reader.Close()
+    $ErrorMessage = $_.Exception.Message
+    $FailedItem = $_.Exception.ItemName
+    Write-Host "Error" $ErrorMessage ":" $FailedItem ":" $_.Exception
+}
+
+Try
+{
+    Write-Host "Applying XSL Transformation on" $xml_input "file... " -NoNewLine
+    $xslt.Transform($xml_reader, $xml_writer)
+    Write-Host "Success" -ForegroundColor Green
+}
+Catch
+{
+    $xml_writer.Close()
+    $xml_reader.Close()
+    $ErrorMessage = $_.Exception.Message
+    $FailedItem = $_.Exception.ItemName
+    Write-Host "Error" $ErrorMessage ":" $FailedItem ":" $_.Exception
+}
+
+Write-Host "Releasing alocated memory... " -NoNewLine
+$xml_writer.Close()
+$xml_reader.Close()
+Write-Host "Success" -ForegroundColor Green
 
 Write-Host "Transformation results stored in" $xml_output
 Write-Host
