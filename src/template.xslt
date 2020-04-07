@@ -22,8 +22,8 @@
         <body>
             <table>
                 <tbody>
-                    <xsl:apply-templates select="ms:node-set($InvoiceTableData)/data/row[1]" mode="extract_table_headers"/>
-                    <xsl:apply-templates select="ms:node-set($InvoiceTableData)/data/row" mode="extract_table_data"/>
+                    <xsl:apply-templates select="ms:node-set($InvoiceTableData)/data/row[1]" mode="print_table_headers"/>
+                    <xsl:apply-templates select="ms:node-set($InvoiceTableData)/data/row" mode="print_table_data"/>
                 </tbody>
             </table>
         </body>
@@ -38,7 +38,7 @@
     </row>
 </xsl:template>
 
-<xsl:template match="row" mode="extract_table_headers">
+<xsl:template match="row" mode="print_table_headers">
     <tr>
         <xsl:for-each select="./column">
             <th><xsl:value-of select="@name"/></th>
@@ -46,7 +46,7 @@
     </tr>
 </xsl:template>
 
-<xsl:template match="row" mode="extract_table_data">
+<xsl:template match="row" mode="print_table_data">
     <tr>
         <xsl:for-each select="./column">
             <td><xsl:value-of select="."/></td>
