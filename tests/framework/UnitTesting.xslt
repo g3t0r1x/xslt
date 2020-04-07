@@ -4,10 +4,10 @@
                               exclude-result-prefixes="ms">
 
 <xsl:include href="UT_Templates/TextTemplates.xslt"/>
-<xsl:include href="UT_Templates/RftTemplates.xslt"/>
+<xsl:include href="UT_Templates/RtfTemplates.xslt"/>
 
 <xsl:variable name="textModes" select="document('UT_Templates/TextModes.xml')/list"/>
-<xsl:variable name="rftModes" select="document('UT_Templates/RftModes.xml')/list"/>
+<xsl:variable name="rtfModes" select="document('UT_Templates/RtfModes.xml')/list"/>
 
 <xsl:template name="ASSERT_THAT_TEXT">
     <xsl:param name="text1"/>
@@ -28,7 +28,7 @@
     <xsl:param name="node2"/>
 
     <result>
-        <xsl:apply-templates select="$mode" mode="rft_mode">
+        <xsl:apply-templates select="$mode" mode="rtf_mode">
             <xsl:with-param name="node1" select="$node1"/>
             <xsl:with-param name="node2" select="$node2"/>
         </xsl:apply-templates>

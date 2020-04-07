@@ -3,14 +3,14 @@
                               xmlns:ms="urn:schemas-microsoft-com:xslt"
                               exclude-result-prefixes="ms">
 
-<xsl:template match="CONTAINS" mode="rft_mode">
+<xsl:template match="CONTAINS" mode="rtf_mode">
     <xsl:param name="node1"/>
     <xsl:param name="node2"/>
 
     <xsl:attribute name="verdict">failed</xsl:attribute>
 </xsl:template>
 
-<xsl:template match="EQUALS" mode="rft_mode">
+<xsl:template match="EQUALS" mode="rtf_mode">
     <xsl:param name="node1"/>
     <xsl:param name="node2"/>
 
