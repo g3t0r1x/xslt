@@ -120,7 +120,7 @@
                             </row>
                         </data>
                     </xsl:variable>
-                    <xsl:call-template name="ASSERT_THAT_NODE">
+                    <xsl:call-template name="ASSERT_THAT_RTF">
                         <xsl:with-param name="node1" select="ms:node-set($InvoiceTableData)"/>
                         <xsl:with-param name="mode" select="$rtfModes/EQUALS"/>
                         <xsl:with-param name="node2" select="ms:node-set($expected_output)"/>
