@@ -13,6 +13,18 @@
     </error_message>
 </xsl:template>
 
+<xsl:template match="text()" mode="text_mode">
+    <xsl:param name="node1"/>
+    <xsl:param name="node2"/>
+
+    <xsl:attribute name="verdict">failed</xsl:attribute>
+    <error_message>
+        <default_or_not_supported_mode_used>
+            <xsl:attribute name="provided_mode"><xsl:value-of select="current()"/></xsl:attribute>
+        </default_or_not_supported_mode_used>
+    </error_message>
+</xsl:template>
+
 <xsl:template match="CONTAINS" mode="text_mode">
     <xsl:param name="text1"/>
     <xsl:param name="text2"/>

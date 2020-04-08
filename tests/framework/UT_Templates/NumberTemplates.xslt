@@ -15,6 +15,18 @@
     </error_message>
 </xsl:template>
 
+<xsl:template match="text()" mode="number_mode">
+    <xsl:param name="num1"/>
+    <xsl:param name="num2"/>
+
+    <xsl:attribute name="verdict">failed</xsl:attribute>
+    <error_message>
+        <default_or_not_supported_mode_used>
+            <xsl:attribute name="provided_mode"><xsl:value-of select="current()"/></xsl:attribute>
+        </default_or_not_supported_mode_used>
+    </error_message>
+</xsl:template>
+
 <xsl:template match="LESS_THAN" mode="number_mode">
     <xsl:param name="num1"/>
     <xsl:param name="num2"/>
