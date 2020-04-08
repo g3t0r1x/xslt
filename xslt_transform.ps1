@@ -36,7 +36,9 @@ Catch
 {
     $ErrorMessage = $_.Exception.Message
     $FailedItem = $_.Exception.ItemName
-    Write-Host "Error" $ErrorMessage ":" $FailedItem ":" $_.Exception
+    Write-Host
+    Write-Host "Error" $ErrorMessage ":" $FailedItem -ForegroundColor Red
+    return
 }
 
 Try
@@ -56,7 +58,9 @@ Catch
     $xml_writer.Close()
     $ErrorMessage = $_.Exception.Message
     $FailedItem = $_.Exception.ItemName
-    Write-Host "Error" $ErrorMessage ":" $FailedItem ":" $_.Exception
+    Write-Host
+    Write-Host "Error" $ErrorMessage ":" $FailedItem -ForegroundColor Red
+    return
 }
 
 Try
@@ -70,7 +74,9 @@ Catch
     $xml_reader.Close()
     $ErrorMessage = $_.Exception.Message
     $FailedItem = $_.Exception.ItemName
-    Write-Host "Error" $ErrorMessage ":" $FailedItem ":" $_.Exception
+    Write-Host
+    Write-Host "Error" $ErrorMessage ":" $FailedItem -ForegroundColor Red
+    return
 }
 
 Try
@@ -85,10 +91,12 @@ Catch
     $xml_reader.Close()
     $ErrorMessage = $_.Exception.Message
     $FailedItem = $_.Exception.ItemName
-    Write-Host "Error" $ErrorMessage ":" $FailedItem ":" $_.Exception
+    Write-Host
+    Write-Host "Error" $ErrorMessage ":" $FailedItem -ForegroundColor Red
+    return
 }
 
-Write-Host "Releasing alocated memory... " -NoNewLine
+Write-Host "Releasing allocated memory... " -NoNewLine
 $xml_writer.Close()
 $xml_reader.Close()
 Write-Host "Success" -ForegroundColor Green

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+<xsl:template match="node()" mode="text_mode">
+    <xsl:param name="node1"/>
+    <xsl:param name="node2"/>
+
+    <xsl:attribute name="verdict">failed</xsl:attribute>
+    <error_message>
+        <default_or_not_supported_mode_used/>
+        <provided_mode><xsl:value-of select="name(current())"/></provided_mode>
+    </error_message>
+</xsl:template>
+
 <xsl:template match="CONTAINS" mode="text_mode">
     <xsl:param name="text1"/>
     <xsl:param name="text2"/>
@@ -11,11 +22,11 @@
         </xsl:when>
         <xsl:otherwise>
             <xsl:attribute name="verdict">failed</xsl:attribute>
-            <error-message>
+            <error_message>
                 <text1><xsl:value-of select="$text1"/></text1>
                 <not_contains/>
                 <text2><xsl:value-of select="$text2"/></text2>
-            </error-message>
+            </error_message>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
@@ -30,11 +41,11 @@
         </xsl:when>
         <xsl:otherwise>
             <xsl:attribute name="verdict">failed</xsl:attribute>
-            <error-message>
+            <error_message>
                 <text1><xsl:value-of select="$text1"/></text1>
-                <not_ends_with/>
+                <does_not_ends_with/>
                 <text2><xsl:value-of select="$text2"/></text2>
-            </error-message>
+            </error_message>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
@@ -49,11 +60,11 @@
         </xsl:when>
         <xsl:otherwise>
             <xsl:attribute name="verdict">failed</xsl:attribute>
-            <error-message>
+            <error_message>
                 <text1><xsl:value-of select="$text1"/></text1>
                 <not_equals/>
                 <text2><xsl:value-of select="$text2"/></text2>
-            </error-message>
+            </error_message>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
@@ -68,11 +79,11 @@
         </xsl:when>
         <xsl:otherwise>
             <xsl:attribute name="verdict">failed</xsl:attribute>
-            <error-message>
+            <error_message>
                 <text1><xsl:value-of select="$text1"/></text1>
-                <not_starts_with/>
+                <does_not_starts_with/>
                 <text2><xsl:value-of select="$text2"/></text2>
-            </error-message>
+            </error_message>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>

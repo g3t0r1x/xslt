@@ -10,6 +10,27 @@
 
     <xsl:template match="/">
         <tests>
+            <tests_for_numbers>
+                <xsl:variable name="AfterTransform">
+                    <xsl:apply-imports/>
+                </xsl:variable>
+                <xsl:variable name="AfterTransformRTF" select="ms:node-set($AfterTransform)/*"/>
+
+                <test id="Test_TransactionTable_NumberOfColumns_ExamplePassCase">
+                    <xsl:call-template name="ASSERT_THAT_NUMBER">
+                        <xsl:with-param name="num1" select="count($AfterTransformRTF//table[@id='transaction_table']//tr/th)"/>
+                        <xsl:with-param name="mode" select="$numberModes/EQUALS"/>
+                        <xsl:with-param name="num2">3</xsl:with-param>
+                    </xsl:call-template>
+                </test>
+                <test id="Test_TransactionTable_NumberOfColumns_ExampleFailedCase">
+                    <xsl:call-template name="ASSERT_THAT_NUMBER">
+                        <xsl:with-param name="num1" select="count($AfterTransformRTF//table[@id='transaction_table']//tr/th)"/>
+                        <xsl:with-param name="mode" select="$numberModes/EQUALS"/>
+                        <xsl:with-param name="num2">10</xsl:with-param>
+                    </xsl:call-template>
+                </test>
+            </tests_for_numbers>
             <tests_for_text_nodes>
                 <test id="Test_InvoiceBodyTypeVariable_ContainsText_ExamplePassCase">
                     <xsl:call-template name="ASSERT_THAT_TEXT">

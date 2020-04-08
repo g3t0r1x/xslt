@@ -20,7 +20,7 @@
 <xsl:template match="/">
     <html>
         <body>
-            <table>
+            <table id="transaction_table">
                 <tbody>
                     <xsl:apply-templates select="ms:node-set($InvoiceTableData)/data/row[1]" mode="print_table_headers"/>
                     <xsl:apply-templates select="ms:node-set($InvoiceTableData)/data/row" mode="print_table_data"/>

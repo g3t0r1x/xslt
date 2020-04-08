@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html>
     <body>
-        <table>
+        <table id="transaction_table">
             <tbody>
                 <tr>
                     <th>InvoiceType</th>

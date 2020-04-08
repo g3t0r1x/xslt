@@ -1,16 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <tests>
+    <tests_for_numbers>
+        <test id="Test_TransactionTable_NumberOfColumns_ExamplePassCase">
+            <result verdict="passed" />
+        </test>
+        <test id="Test_TransactionTable_NumberOfColumns_ExampleFailedCase">
+            <result verdict="failed">
+                <error_message>
+                    <num1>3</num1>
+                    <not_equals />
+                    <num2>10</num2>
+                </error_message>
+            </result>
+        </test>
+    </tests_for_numbers>
     <tests_for_text_nodes>
         <test id="Test_InvoiceBodyTypeVariable_ContainsText_ExamplePassCase">
             <result verdict="passed" />
         </test>
         <test id="Test_InvoiceBodyTypeVariable_ContainsText_ExampleFailedCase">
             <result verdict="failed">
-                <error-message>
+                <error_message>
                     <text1>SuperInvoice</text1>
                     <not_contains />
                     <text2>perTestInv</text2>
-                </error-message>
+                </error_message>
             </result>
         </test>
         <test id="Test_InvoiceBodyTypeVariable_EndsWithText_ExamplePassCase">
@@ -18,11 +32,11 @@
         </test>
         <test id="Test_InvoiceBodyTypeVariable_EndsWithText_ExampleFailedCase">
             <result verdict="failed">
-                <error-message>
+                <error_message>
                     <text1>SuperInvoice</text1>
-                    <not_ends_with />
+                    <does_not_ends_with />
                     <text2>voiceTest</text2>
-                </error-message>
+                </error_message>
             </result>
         </test>
         <test id="Test_InvoiceBodyTypeVariable_EqualsText_ExamplePassCase">
@@ -30,11 +44,11 @@
         </test>
         <test id="Test_InvoiceBodyTypeVariable_EqualsText_ExampleFailedCase">
             <result verdict="failed">
-                <error-message>
+                <error_message>
                     <text1>SuperInvoice</text1>
                     <not_equals />
                     <text2>SuperTest_Invoice</text2>
-                </error-message>
+                </error_message>
             </result>
         </test>
         <test id="Test_InvoiceBodyTypeVariable_StartsWithText_ExamplePassCase">
@@ -42,11 +56,11 @@
         </test>
         <test id="Test_InvoiceBodyTypeVariable_StartsWithText_ExampleFailedCase">
             <result verdict="failed">
-                <error-message>
+                <error_message>
                     <text1>SuperInvoice</text1>
-                    <not_starts_with />
+                    <does_not_starts_with />
                     <text2>SuperTest</text2>
-                </error-message>
+                </error_message>
             </result>
         </test>
     </tests_for_text_nodes>
