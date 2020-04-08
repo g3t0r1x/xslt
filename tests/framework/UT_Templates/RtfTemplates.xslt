@@ -9,8 +9,9 @@
 
     <xsl:attribute name="verdict">failed</xsl:attribute>
     <error_message>
-        <default_or_not_supported_mode_used/>
-        <provided_mode><xsl:value-of select="name(current())"/></provided_mode>
+        <default_or_not_supported_mode_used>
+            <xsl:attribute name="provided_mode"><xsl:value-of select="name(current())"/></xsl:attribute>
+        </default_or_not_supported_mode_used>
     </error_message>
 </xsl:template>
 

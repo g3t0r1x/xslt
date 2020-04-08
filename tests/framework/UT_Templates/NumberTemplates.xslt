@@ -9,8 +9,9 @@
 
     <xsl:attribute name="verdict">failed</xsl:attribute>
     <error_message>
-        <default_or_not_supported_mode_used/>
-        <provided_mode><xsl:value-of select="name(current())"/></provided_mode>
+        <default_or_not_supported_mode_used>
+            <xsl:attribute name="provided_mode"><xsl:value-of select="name(current())"/></xsl:attribute>
+        </default_or_not_supported_mode_used>
     </error_message>
 </xsl:template>
 
@@ -30,7 +31,7 @@
     </xsl:variable>
 
     <xsl:choose>
-        <xsl:when test="ms:node-set($areNumbersValid)//NaN">
+        <xsl:when test="ms:node-set($areNumbersValid)//InvalidNumber">
             <xsl:call-template name="InvalidNumbersErrorMessage">
                 <xsl:with-param name="num1" select="$num1"/>
                 <xsl:with-param name="num2" select="$num2"/>
@@ -43,7 +44,7 @@
             <xsl:attribute name="verdict">failed</xsl:attribute>
             <error_message>
                 <num1><xsl:value-of select="$num1"/></num1>
-                <not_less_then/>
+                <not_less_than/>
                 <num2><xsl:value-of select="$num2"/></num2>
             </error_message>
         </xsl:otherwise>
@@ -66,7 +67,7 @@
     </xsl:variable>
 
     <xsl:choose>
-        <xsl:when test="ms:node-set($areNumbersValid)//NaN">
+        <xsl:when test="ms:node-set($areNumbersValid)//InvalidNumber">
             <xsl:call-template name="InvalidNumbersErrorMessage">
                 <xsl:with-param name="num1" select="$num1"/>
                 <xsl:with-param name="num2" select="$num2"/>
@@ -79,7 +80,7 @@
             <xsl:attribute name="verdict">failed</xsl:attribute>
             <error_message>
                 <num1><xsl:value-of select="$num1"/></num1>
-                <not_less_then_or_equals/>
+                <not_less_than_or_equals/>
                 <num2><xsl:value-of select="$num2"/></num2>
             </error_message>
         </xsl:otherwise>
@@ -102,7 +103,7 @@
     </xsl:variable>
 
     <xsl:choose>
-        <xsl:when test="ms:node-set($areNumbersValid)//NaN">
+        <xsl:when test="ms:node-set($areNumbersValid)//InvalidNumber">
             <xsl:call-template name="InvalidNumbersErrorMessage">
                 <xsl:with-param name="num1" select="$num1"/>
                 <xsl:with-param name="num2" select="$num2"/>
@@ -115,7 +116,7 @@
             <xsl:attribute name="verdict">failed</xsl:attribute>
             <error_message>
                 <num1><xsl:value-of select="$num1"/></num1>
-                <not_greater_then/>
+                <not_greater_than/>
                 <num2><xsl:value-of select="$num2"/></num2>
             </error_message>
         </xsl:otherwise>
@@ -138,7 +139,7 @@
     </xsl:variable>
 
     <xsl:choose>
-        <xsl:when test="ms:node-set($areNumbersValid)//NaN">
+        <xsl:when test="ms:node-set($areNumbersValid)//InvalidNumber">
             <xsl:call-template name="InvalidNumbersErrorMessage">
                 <xsl:with-param name="num1" select="$num1"/>
                 <xsl:with-param name="num2" select="$num2"/>
@@ -151,7 +152,7 @@
             <xsl:attribute name="verdict">failed</xsl:attribute>
             <error_message>
                 <num1><xsl:value-of select="$num1"/></num1>
-                <not_greater_then_or_equals/>
+                <not_greater_than_or_equals/>
                 <num2><xsl:value-of select="$num2"/></num2>
             </error_message>
         </xsl:otherwise>
@@ -174,7 +175,7 @@
     </xsl:variable>
 
     <xsl:choose>
-        <xsl:when test="ms:node-set($areNumbersValid)//NaN">
+        <xsl:when test="ms:node-set($areNumbersValid)//InvalidNumber">
             <xsl:call-template name="InvalidNumbersErrorMessage">
                 <xsl:with-param name="num1" select="$num1"/>
                 <xsl:with-param name="num2" select="$num2"/>
@@ -210,7 +211,7 @@
     </xsl:variable>
 
     <xsl:choose>
-        <xsl:when test="ms:node-set($areNumbersValid)//NaN">
+        <xsl:when test="ms:node-set($areNumbersValid)//InvalidNumber">
             <xsl:call-template name="InvalidNumbersErrorMessage">
                 <xsl:with-param name="num1" select="$num1"/>
                 <xsl:with-param name="num2" select="$num2"/>
@@ -234,7 +235,7 @@
     <xsl:param name="number"/>
 
     <xsl:choose>
-        <xsl:when test="string(number($number)) = 'NaN'"><NaN/></xsl:when>
+        <xsl:when test="string(number($number)) = 'NaN'"><InvalidNumber/></xsl:when>
         <xsl:otherwise><ValidNumber/></xsl:otherwise>
     </xsl:choose>
 </xsl:template>
@@ -245,9 +246,10 @@
 
     <xsl:attribute name="verdict">failed</xsl:attribute>
     <error_message>
-        <invalid_numbers/>
-        <num1><xsl:value-of select="$num1"/></num1>
-        <num2><xsl:value-of select="$num2"/></num2>
+        <invalid_numbers>
+            <num1><xsl:value-of select="$num1"/></num1>
+            <num2><xsl:value-of select="$num2"/></num2>
+        </invalid_numbers>
     </error_message>
 </xsl:template>
 

@@ -34,7 +34,7 @@
             <result verdict="failed">
                 <error_message>
                     <text1>SuperInvoice</text1>
-                    <does_not_ends_with />
+                    <does_not_end_with />
                     <text2>voiceTest</text2>
                 </error_message>
             </result>
@@ -58,7 +58,7 @@
             <result verdict="failed">
                 <error_message>
                     <text1>SuperInvoice</text1>
-                    <does_not_starts_with />
+                    <does_not_start_with />
                     <text2>SuperTest</text2>
                 </error_message>
             </result>
