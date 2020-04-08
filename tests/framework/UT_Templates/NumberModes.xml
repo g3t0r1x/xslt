@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list>
-    <LESS_THAN/>
-    <LESS_THAN_OR_EQUALS/>
+    <EQUALS/>
     <GREATER_THAN/>
     <GREATER_THAN_OR_EQUALS/>
-    <EQUALS/>
+    <LESS_THAN/>
+    <LESS_THAN_OR_EQUALS/>
     <NOT_EQUALS/>
 </list>
