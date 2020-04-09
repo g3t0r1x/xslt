@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tests>
+    <test id="Test_AsertEqualsTemplate_ExamplePassCase">
+        <result verdict="passed" />
+    </test>
+    <test id="Test_AsertEqualsTemplate_ExampleFailedCase">
+        <result verdict="failed">
+            <error_message>
+                <text1>SomeRandomText</text1>
+                <not_equals />
+                <text2>SomeRandomText2</text2>
+            </error_message>
+        </result>
+    </test>
+    <test id="Test_AsertNotEqualsTemplate_ExamplePassCase">
+        <result verdict="passed" />
+    </test>
+    <test id="Test_AsertNotEqualsTemplate_ExampleFailedCase">
+        <result verdict="failed">
+            <error_message>
+                <num1>1</num1>
+                <equals />
+                <num2>1</num2>
+            </error_message>
+        </result>
+    </test>
+    <test id="Test_AsertTrueTemplate_ExamplePassCase">
+        <result verdict="passed" />
+    </test>
+    <test id="Test_AsertTrueTemplate_ExampleFailedCase">
+        <result verdict="failed">
+            <error_message>
+                <text1>false</text1>
+                <not_equals />
+                <text2>true</text2>
+            </error_message>
+        </result>
+    </test>
+    <test id="Test_AsertFalseTemplate_ExamplePassCase">
+        <result verdict="passed" />
+    </test>
+    <test id="Test_AsertFalseTemplate_ExampleFailedCase">
+        <result verdict="failed">
+            <error_message>
+                <text1>true</text1>
+                <not_equals />
+                <text2>false</text2>
+            </error_message>
+        </result>
+    </test>
+    <test id="Test_ModeTypeMismatch">
+        <result verdict="failed">
+            <error_message>
+                <mode_type_mismatch>
+                    <got>
+                        <text />
+                    </got>
+                    <expected>
+                        <rtf />
+                    </expected>
+                </mode_type_mismatch>
+            </error_message>
+        </result>
+    </test>
+    <test id="Test_ArgumentTypeMismatch">
+        <result verdict="failed">
+            <error_message>
+                <argument_type_mismatch>
+                    <arg1>
+                        <rtf />
+                    </arg1>
+                    <arg2>
+                        <text />
+                    </arg2>
+                </argument_type_mismatch>
+            </error_message>
+        </result>
+    </test>
+    <test id="Test_DefaultModeForNumbers">
+        <result verdict="failed">
+            <error_message>
+                <default_or_not_supported_mode_used provided_mode="DEFAULT" />
+            </error_message>
+        </result>
+    </test>
+    <test id="Test_NotSupportedModeForNumbers">
+        <result verdict="failed">
+            <error_message>
+                <default_or_not_supported_mode_used provided_mode="my_node" />
+            </error_message>
+        </result>
+    </test>
+    <test id="Test_DefaultModeForRtf">
+        <result verdict="failed">
+            <error_message>
+                <default_or_not_supported_mode_used provided_mode="DEFAULT" />
+            </error_message>
+        </result>
+    </test>
+    <test id="Test_NotSupportedModeForRtf">
+        <result verdict="failed">
+            <error_message>
+                <default_or_not_supported_mode_used provided_mode="my_node" />
+            </error_message>
+        </result>
+    </test>
+    <test id="Test_DefaultModeForText">
+        <result verdict="failed">
+            <error_message>
+                <default_or_not_supported_mode_used provided_mode="DEFAULT" />
+            </error_message>
+        </result>
+    </test>
+    <test id="Test_NotSupportedModeForText">
+        <result verdict="failed">
+            <error_message>
+                <default_or_not_supported_mode_used provided_mode="my_node" />
+            </error_message>
+        </result>
+    </test>
+</tests>

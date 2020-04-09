@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+    <COMMON>
+        <DEFAULT/>
+        <EQUALS/>
+        <NOT_EQUALS/>
+    </COMMON>
+    <NUMBER_SPECIFIC>
+        <GREATER_THAN/>
+        <GREATER_THAN_OR_EQUALS/>
+        <LESS_THAN/>
+        <LESS_THAN_OR_EQUALS/>
+    </NUMBER_SPECIFIC>
+    <RTF_SPECIFIC>
+        <HAS_INTERFACE_LIKE/>
+        <IS_SUBSET_OF/>
+    </RTF_SPECIFIC>
+    <TEXT_SPECIFIC>
+        <CONTAINS/>
+        <ENDS_WITH/>
+        <STARTS_WITH/>
+    </TEXT_SPECIFIC>
+</list>

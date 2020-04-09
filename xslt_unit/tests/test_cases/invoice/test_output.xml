@@ -51,6 +51,18 @@
                 </error_message>
             </result>
         </test>
+        <test id="Test_InvoiceBodyTypeVariable_NotEqualsText_ExamplePassCase">
+            <result verdict="passed" />
+        </test>
+        <test id="Test_InvoiceBodyTypeVariable_NotEqualsText_ExampleFailedCase">
+            <result verdict="failed">
+                <error_message>
+                    <text1>SuperInvoice</text1>
+                    <equals />
+                    <text2>SuperInvoice</text2>
+                </error_message>
+            </result>
+        </test>
         <test id="Test_InvoiceBodyTypeVariable_StartsWithText_ExamplePassCase">
             <result verdict="passed" />
         </test>
