@@ -1,0 +1,40 @@
+This is project of unit testing framework for XSLT language.
+
+All rights reverved. Please use only under my permission.
+
+<h1>Introduction</h1>
+
+Many modern languages like Java, C++ or C# offer its communities way to write unit tests to make code more buggy-proof.
+I decided to check if there is any way to write unit tests in xslt language.
+The results have blown up my mind.
+
+<h1>How to use xslt unit framework</h1>
+
+Follow simple steps:
+1. In your testing stylesheet import both XSLT entry template that you would like to test and UnitTestingFacade.
+2. Write unit tests using assertions provided in UnitTestingFacade.
+   Possible tests:
+    - content of rtf global variables,
+    - content of text global variables,
+    - content of bool global variables,
+    - content of numeric global variables,
+    - transformation output using <xsl:apply-imports/> instruction via local variable including:
+        * concrete element comparison,
+        * concrete attribute comparison,
+        * concrete text comparison
+    - transformation of concrete templates using <xsl:call-template/> instruction via local variable.
+    Some examples you might find in tests/test_cases folder along with XML outputs.
+3. Use xslt_transform.ps1 script with following arguments:
+    - $xslt_stylesheet as path to your testing stylesheet,
+    - $xml_input as path to XML file on which transformation will be applied (i.e. ./src/input.xml)
+    - $xml_output as path to XML file where transformation results will be stored
+
+You might write script to execute all tests at once and feel your buggy-proof code updates in seconds.
+Just simply gather all testing stylesheets along with their accompanying XML input files and then execute xslt_transform.ps1 for each such pair.
+Please note at this point that each test case is formed by an inseparable pair XSLT stylesheet + XML input.
+
+<h1>Back log</h1>
+
+1. Add implemenetation of rtf asserts
+2. >Write new powershell script using COM objects to apply transformation
+3. Add version 2.0 and 3.0 support

@@ -17,16 +17,14 @@
                 <xsl:variable name="AfterTransformRTF" select="ms:node-set($AfterTransform)/*"/>
 
                 <test id="Test_TransactionTable_NumberOfColumns_ExamplePassCase">
-                    <xsl:call-template name="ASSERT_THAT">
+                    <xsl:call-template name="ASSERT_EQUALS">
                         <xsl:with-param name="arg1" select="count($AfterTransformRTF//table[@id='transaction_table']//tr/th)"/>
-                        <xsl:with-param name="mode" select="$modes/COMMON/EQUALS"/>
                         <xsl:with-param name="arg2">3</xsl:with-param>
                     </xsl:call-template>
                 </test>
                 <test id="Test_TransactionTable_NumberOfColumns_ExampleFailedCase">
-                    <xsl:call-template name="ASSERT_THAT">
+                    <xsl:call-template name="ASSERT_EQUALS">
                         <xsl:with-param name="arg1" select="count($AfterTransformRTF//table[@id='transaction_table']//tr/th)"/>
-                        <xsl:with-param name="mode" select="$modes/COMMON/EQUALS"/>
                         <xsl:with-param name="arg2">10</xsl:with-param>
                     </xsl:call-template>
                 </test>
@@ -61,30 +59,26 @@
                     </xsl:call-template>
                 </test>
                 <test id="Test_InvoiceBodyTypeVariable_EqualsText_ExamplePassCase">
-                    <xsl:call-template name="ASSERT_THAT">
+                    <xsl:call-template name="ASSERT_EQUALS">
                         <xsl:with-param name="arg1" select="$InvoiceBodyType"/>
-                        <xsl:with-param name="mode" select="$modes/COMMON/EQUALS"/>
                         <xsl:with-param name="arg2">SuperInvoice</xsl:with-param>
                     </xsl:call-template>
                 </test>
                 <test id="Test_InvoiceBodyTypeVariable_EqualsText_ExampleFailedCase">
-                    <xsl:call-template name="ASSERT_THAT">
+                    <xsl:call-template name="ASSERT_EQUALS">
                         <xsl:with-param name="arg1" select="$InvoiceBodyType"/>
-                        <xsl:with-param name="mode" select="$modes/COMMON/EQUALS"/>
                         <xsl:with-param name="arg2">SuperTest_Invoice</xsl:with-param>
                     </xsl:call-template>
                 </test>
                 <test id="Test_InvoiceBodyTypeVariable_NotEqualsText_ExamplePassCase">
-                    <xsl:call-template name="ASSERT_THAT">
+                    <xsl:call-template name="ASSERT_NOT_EQUALS">
                         <xsl:with-param name="arg1" select="$InvoiceBodyType"/>
-                        <xsl:with-param name="mode" select="$modes/COMMON/NOT_EQUALS"/>
                         <xsl:with-param name="arg2">SuperTest_Invoice</xsl:with-param>
                     </xsl:call-template>
                 </test>
                 <test id="Test_InvoiceBodyTypeVariable_NotEqualsText_ExampleFailedCase">
-                    <xsl:call-template name="ASSERT_THAT">
+                    <xsl:call-template name="ASSERT_NOT_EQUALS">
                         <xsl:with-param name="arg1" select="$InvoiceBodyType"/>
-                        <xsl:with-param name="mode" select="$modes/COMMON/NOT_EQUALS"/>
                         <xsl:with-param name="arg2">SuperInvoice</xsl:with-param>
                     </xsl:call-template>
                 </test>
@@ -134,9 +128,8 @@
                             </row>
                         </data>
                     </xsl:variable>
-                    <xsl:call-template name="ASSERT_THAT">
+                    <xsl:call-template name="ASSERT_EQUALS">
                         <xsl:with-param name="arg1" select="ms:node-set($InvoiceTableData)"/>
-                        <xsl:with-param name="mode" select="$modes/COMMON/EQUALS"/>
                         <xsl:with-param name="arg2" select="ms:node-set($expected_output)"/>
                     </xsl:call-template>
                 </test>
