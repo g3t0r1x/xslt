@@ -22,9 +22,8 @@ Follow simple steps:
         * concrete element comparison,
         * concrete attribute comparison,
         * concrete text comparison
-        As a reference please check <tests_for_numbers/> in InvoiceEntryTemplateTests stylesheet
-    - transformation of concrete templates using <xsl:call-template/> instruction via local variable,
-    - checking if particular named template was called.
+        As a reference please check <tests_for_numbers/> in InvoiceEntryTemplateTests stylesheet.
+    - checking if particular named template was called using import precedence and template overriding.
     Some examples you might find in tests/test_cases folder along with XML outputs.
 3. Use xslt_transform.ps1 script with following arguments:
     - $xslt_stylesheet as path to your testing stylesheet,
