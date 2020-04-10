@@ -114,6 +114,19 @@
                     <xsl:with-param name="arg2">SomeRandomText2</xsl:with-param>
                 </xsl:call-template>
             </test>
+            <test id="Test_AfterTransformTypeMismatch">
+                <xsl:call-template name="EXPECT_CALL">
+                    <xsl:with-param name="afterTransform">SomeRandomText</xsl:with-param>
+                    <xsl:with-param name="templateName">SomeRandomText2</xsl:with-param>
+                </xsl:call-template>
+            </test>
+            <test id="Test_TemplateNameTypeMismatch">
+                <xsl:variable name="node"><my_node/></xsl:variable>
+                <xsl:call-template name="EXPECT_CALL">
+                    <xsl:with-param name="afterTransform" select="ms:node-set($node)"/>
+                    <xsl:with-param name="templateName" select="ms:node-set($node)"/>
+                </xsl:call-template>
+            </test>
         </tests>
     </xsl:template>
 </xsl:stylesheet>

@@ -110,4 +110,58 @@
             </xsl:choose>
         </result>
     </xsl:template>
+
+    <xsl:template name="EXPECT_CALL">
+        <xsl:param name="afterTransform"/>
+        <xsl:param name="templateName"/>
+        <xsl:param name="times">1</xsl:param>
+
+        <xsl:variable name="afterTransformType">
+            <list>
+                <xsl:apply-templates select="ms:node-set($afterTransform)" mode="get_type"/>
+            </list>
+        </xsl:variable>
+
+        <xsl:variable name="templateNameType">
+            <list>
+                <xsl:apply-templates select="ms:node-set($templateName)" mode="get_type"/>
+            </list>
+        </xsl:variable>
+
+        <result>
+            <xsl:choose>
+                <xsl:when test="not(ms:node-set($afterTransformType)//rtf)">
+                    <xsl:attribute name="verdict">failed</xsl:attribute>
+                    <error_message>
+                        <after_transform_type_mismatch>
+                            <got><xsl:copy-of select="ms:node-set($afterTransformType)/list/*"/></got>
+                            <expected><rtf/></expected>
+                        </after_transform_type_mismatch>
+                    </error_message>
+                </xsl:when>
+                <xsl:when test="not(ms:node-set($templateNameType)//text)">
+                    <xsl:attribute name="verdict">failed</xsl:attribute>
+                    <error_message>
+                        <template_name_type_mismatch>
+                            <got><xsl:copy-of select="ms:node-set($templateNameType)/list/*"/></got>
+                            <expected><text/></expected>
+                        </template_name_type_mismatch>
+                    </error_message>
+                </xsl:when>
+                <xsl:when test="count(ms:node-set($afterTransform)//*[name() = $templateName]) = $times">
+                    <xsl:attribute name="verdict">passed</xsl:attribute>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:attribute name="verdict">failed</xsl:attribute>
+                    <error_message>
+                        <template_not_called_enough_times>
+                            <name><xsl:value-of select="$templateName"/></name>
+                            <actual_calls><xsl:value-of select="count(ms:node-set($afterTransform)//*[name() = $templateName])"/></actual_calls>
+                            <expected_calls><xsl:value-of select="$times"/></expected_calls>
+                        </template_not_called_enough_times>
+                    </error_message>
+                </xsl:otherwise>
+            </xsl:choose>
+        </result>
+    </xsl:template>
 </xsl:stylesheet>

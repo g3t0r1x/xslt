@@ -6,25 +6,39 @@
     <xsl:import href="../../../src/InvoiceEntryTemplate.xslt"/>
     <xsl:import href="../../framework/UnitTestingFacade.xslt"/>
 
+    <xsl:include href="InvoiceEntryTemplateMocks.xslt"/>
+
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
     <xsl:template match="/">
-        <tests>
-            <tests_for_numbers>
-                <xsl:variable name="AfterTransform">
-                    <xsl:apply-imports/>
-                </xsl:variable>
-                <xsl:variable name="AfterTransformRTF" select="ms:node-set($AfterTransform)/*"/>
+        <xsl:variable name="afterTransform"><xsl:apply-imports/></xsl:variable>
+        <xsl:variable name="afterTransformRTF" select="ms:node-set($afterTransform)/*"/>
 
+        <tests>
+            <test_for_call_templates>
+                <test id="Test_CheckIfTemplateAdditionalInfoSuperInvoiceWasCalled_ExamplePassCase">
+                    <xsl:call-template name="EXPECT_CALL">
+                        <xsl:with-param name="afterTransform" select="$afterTransformRTF"/>
+                        <xsl:with-param name="templateName">AdditionalInfo_SuperInvoice</xsl:with-param>
+                    </xsl:call-template>
+                </test>
+                <test id="Test_CheckIfTemplateAdditionalInfoNormalInvoiceWasCalled_ExampleFailedCase">
+                    <xsl:call-template name="EXPECT_CALL">
+                        <xsl:with-param name="afterTransform" select="$afterTransformRTF"/>
+                        <xsl:with-param name="templateName">AdditionalInfo_NormalInvoice</xsl:with-param>
+                    </xsl:call-template>
+                </test>
+            </test_for_call_templates>
+            <tests_for_numbers>
                 <test id="Test_TransactionTable_NumberOfColumns_ExamplePassCase">
                     <xsl:call-template name="ASSERT_EQUALS">
-                        <xsl:with-param name="arg1" select="count($AfterTransformRTF//table[@id='transaction_table']//tr/th)"/>
+                        <xsl:with-param name="arg1" select="count($afterTransformRTF//table[@id='transaction_table']//tr/th)"/>
                         <xsl:with-param name="arg2">3</xsl:with-param>
                     </xsl:call-template>
                 </test>
                 <test id="Test_TransactionTable_NumberOfColumns_ExampleFailedCase">
                     <xsl:call-template name="ASSERT_EQUALS">
-                        <xsl:with-param name="arg1" select="count($AfterTransformRTF//table[@id='transaction_table']//tr/th)"/>
+                        <xsl:with-param name="arg1" select="count($afterTransformRTF//table[@id='transaction_table']//tr/th)"/>
                         <xsl:with-param name="arg2">10</xsl:with-param>
                     </xsl:call-template>
                 </test>

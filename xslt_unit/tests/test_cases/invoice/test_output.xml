@@ -1,5 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <tests>
+    <test_for_call_templates>
+        <test id="Test_CheckIfTemplateAdditionalInfoSuperInvoiceWasCalled_ExamplePassCase">
+            <result verdict="passed" />
+        </test>
+        <test id="Test_CheckIfTemplateAdditionalInfoNormalInvoiceWasCalled_ExampleFailedCase">
+            <result verdict="failed">
+                <error_message>
+                    <template_not_called_enough_times>
+                        <name>AdditionalInfo_NormalInvoice</name>
+                        <actual_calls>0</actual_calls>
+                        <expected_calls>1</expected_calls>
+                    </template_not_called_enough_times>
+                </error_message>
+            </result>
+        </test>
+    </test_for_call_templates>
     <tests_for_numbers>
         <test id="Test_TransactionTable_NumberOfColumns_ExamplePassCase">
             <result verdict="passed" />

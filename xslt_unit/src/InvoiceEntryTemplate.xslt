@@ -2,56 +2,73 @@
                               xmlns:ms="urn:schemas-microsoft-com:xslt"
                               exclude-result-prefixes="ms">
 
-<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
+    <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
-<xsl:variable name="InvoiceBodyType">
-    <xsl:choose>
-        <xsl:when test="//transaction[@name='Priority']">SuperInvoice</xsl:when>
-        <xsl:otherwise>NormalInvoice</xsl:otherwise>
-    </xsl:choose>
-</xsl:variable>
+    <xsl:variable name="InvoiceBodyType">
+        <xsl:choose>
+            <xsl:when test="//transaction[@name='Priority']">SuperInvoice</xsl:when>
+            <xsl:otherwise>NormalInvoice</xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
 
-<xsl:variable name="InvoiceTableData">
-    <data>
-        <xsl:apply-templates select="//transaction" mode="data_transform"/>
-    </data>
-</xsl:variable>
+    <xsl:variable name="InvoiceTableData">
+        <data>
+            <xsl:apply-templates select="//transaction" mode="data_transform"/>
+        </data>
+    </xsl:variable>
 
-<xsl:template match="/">
-    <html>
-        <body>
-            <table id="transaction_table">
-                <tbody>
-                    <xsl:apply-templates select="ms:node-set($InvoiceTableData)/data/row[1]" mode="print_table_headers"/>
-                    <xsl:apply-templates select="ms:node-set($InvoiceTableData)/data/row" mode="print_table_data"/>
-                </tbody>
-            </table>
-        </body>
-    </html>
-</xsl:template>
+    <xsl:template match="/">
+        <html>
+            <body>
+                <table id="transaction_table">
+                    <tbody>
+                        <xsl:apply-templates select="ms:node-set($InvoiceTableData)/data/row[1]" mode="print_table_headers"/>
+                        <xsl:apply-templates select="ms:node-set($InvoiceTableData)/data/row" mode="print_table_data"/>
+                    </tbody>
+                </table>
+                <xsl:choose>
+                    <xsl:when test="$InvoiceBodyType = 'SuperInvoice'">
+                        <xsl:call-template name="AdditionalInfo_SuperInvoice"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:call-template name="AdditionalInfo_NormalInvoice"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </body>
+        </html>
+    </xsl:template>
 
-<xsl:template match="transaction" mode="data_transform">
-    <row>
-        <column name="InvoiceType"><xsl:value-of select="@name"/></column>
-        <column name="InvoiceAmount">$<xsl:value-of select="./value"/></column>
-        <column name="InvoiceRecipient"><xsl:value-of select="./person"/></column>
-    </row>
-</xsl:template>
+    <xsl:template match="transaction" mode="data_transform">
+        <row>
+            <column name="InvoiceType"><xsl:value-of select="@name"/></column>
+            <column name="InvoiceAmount">$<xsl:value-of select="./value"/></column>
+            <column name="InvoiceRecipient"><xsl:value-of select="./person"/></column>
+        </row>
+    </xsl:template>
 
-<xsl:template match="row" mode="print_table_headers">
-    <tr>
-        <xsl:for-each select="./column">
-            <th><xsl:value-of select="@name"/></th>
-        </xsl:for-each>
-    </tr>
-</xsl:template>
+    <xsl:template match="row" mode="print_table_headers">
+        <tr>
+            <xsl:for-each select="./column">
+                <th><xsl:value-of select="@name"/></th>
+            </xsl:for-each>
+        </tr>
+    </xsl:template>
 
-<xsl:template match="row" mode="print_table_data">
-    <tr>
-        <xsl:for-each select="./column">
-            <td><xsl:value-of select="."/></td>
-        </xsl:for-each>
-    </tr>
-</xsl:template>
+    <xsl:template match="row" mode="print_table_data">
+        <tr>
+            <xsl:for-each select="./column">
+                <td><xsl:value-of select="."/></td>
+            </xsl:for-each>
+        </tr>
+    </xsl:template>
 
+    <xsl:template name="AdditionalInfo_SuperInvoice">
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+        <p>This is super invoice.</p>
+    </xsl:template>
+
+    <xsl:template name="AdditionalInfo_NormalInvoice">
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+        <p>This is normal invoice.</p>
+    </xsl:template>
 </xsl:stylesheet>

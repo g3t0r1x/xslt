@@ -118,4 +118,32 @@
             </error_message>
         </result>
     </test>
+    <test id="Test_AfterTransformTypeMismatch">
+        <result verdict="failed">
+            <error_message>
+                <after_transform_type_mismatch>
+                    <got>
+                        <text />
+                    </got>
+                    <expected>
+                        <rtf />
+                    </expected>
+                </after_transform_type_mismatch>
+            </error_message>
+        </result>
+    </test>
+    <test id="Test_TemplateNameTypeMismatch">
+        <result verdict="failed">
+            <error_message>
+                <template_name_type_mismatch>
+                    <got>
+                        <rtf />
+                    </got>
+                    <expected>
+                        <text />
+                    </expected>
+                </template_name_type_mismatch>
+            </error_message>
+        </result>
+    </test>
 </tests>

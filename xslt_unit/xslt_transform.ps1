@@ -32,6 +32,13 @@ Try
     $xslt.Load($xslt_stylesheet, $xslt_settings, $xml_url_resolver)
     Write-Host "Success" -ForegroundColor Green
 }
+Catch [System.Xml.Xsl.XsltException]
+{
+    $ErrorMessage = $_.Exception.ToString()
+    Write-Host
+    Write-Host "Error" $ErrorMessage -ForegroundColor Red
+    return
+}
 Catch
 {
     $ErrorMessage = $_.Exception.Message
@@ -84,6 +91,13 @@ Try
     Write-Host "Applying XSL Transformation on" $xml_input "file... " -NoNewLine
     $xslt.Transform($xml_reader, $xml_writer)
     Write-Host "Success" -ForegroundColor Green
+}
+Catch [System.Xml.Xsl.XsltException]
+{
+    $ErrorMessage = $_.Exception.ToString()
+    Write-Host
+    Write-Host "Error" $ErrorMessage -ForegroundColor Red
+    return
 }
 Catch
 {
