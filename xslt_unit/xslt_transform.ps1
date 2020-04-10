@@ -94,6 +94,8 @@ Try
 }
 Catch [System.Xml.Xsl.XsltException]
 {
+    $xml_writer.Close()
+    $xml_reader.Close()
     $ErrorMessage = $_.Exception.ToString()
     Write-Host
     Write-Host "Error" $ErrorMessage -ForegroundColor Red
